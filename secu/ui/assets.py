@@ -17,14 +17,14 @@ def load_favicon(root):
         data_48 = base64.b64decode(FAVICON_B64_48)
         data_28 = base64.b64decode(FAVICON_B64_28)
 
-        img_48 = Image.open(BytesIO(data_48)).convert(RGBA)
-        img_28 = Image.open(BytesIO(data_28)).convert(RGBA)
+        img_48 = Image.open(BytesIO(data_48)).convert("RGBA")
+        img_28 = Image.open(BytesIO(data_28)).convert("RGBA")
 
         favicon_window = ImageTk.PhotoImage(img_48)
         img_header = img_28.resize((36, 36), Image.LANCZOS)
         favicon_header = ImageTk.PhotoImage(img_header)
 
-        root.tk.call(wm, iconphoto, root._w, favicon_window)
+        root.tk.call("wm", "iconphoto", root._w, favicon_window)
         return favicon_window, favicon_header
     except Exception:
         return None, None
