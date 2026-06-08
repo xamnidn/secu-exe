@@ -66,7 +66,7 @@ class MainView(BaseView):
         self._top_row = top_row
 
         left_group = tk.Frame(top_row, bg=self.app.theme.get_bg_card())
-        left_group.pack(side="left", fill="y", expand=False)
+        left_group.pack(side="left", fill="y", padx=(10, 0))
         self._left_group = left_group
 
         if self.app.favicon_header:
@@ -74,14 +74,13 @@ class MainView(BaseView):
                 left_group, image=self.app.favicon_header,
                 bg=self.app.theme.get_bg_card()
             )
-            self._lbl_icon.pack(side="left", padx=(0, 6))
+            self._lbl_icon.pack(side="left", padx=(0, 10), fill="y")
         else:
             self._lbl_icon = None
 
         text_col = tk.Frame(left_group, bg=self.app.theme.get_bg_card())
         text_col.pack(side="left", fill="y")
 
-        # Spacer atas agar blok teks center vertikal
         tk.Frame(text_col, bg=self.app.theme.get_bg_card()).pack(expand=True, fill="y")
 
         self._header_title_lbl = tk.Label(
@@ -102,11 +101,13 @@ class MainView(BaseView):
         )
         self._header_sub_lbl.pack(anchor="w")
 
-        # Spacer bawah agar blok teks center vertikal
         tk.Frame(text_col, bg=self.app.theme.get_bg_card()).pack(expand=True, fill="y")
 
+        self._hamburger_box = tk.Frame(top_row, bg=self.app.theme.get_bg_card())
+        self._hamburger_box.pack(side="right", fill="y", padx=(0, 10))
+
         self._hamburger_btn = tk.Button(
-            top_row,
+            self._hamburger_box,
             text="\u2630",
             bg=self.app.theme.get_bg_card(),
             fg=self.app.theme.get_text_muted(),
@@ -115,7 +116,7 @@ class MainView(BaseView):
             padx=4, pady=0,
             command=self._on_hamburger,
         )
-        self._hamburger_btn.pack(side="right", pady=(8, 8))
+        self._hamburger_btn.pack(expand=True)
         self._hamburger_btn.bind("<Enter>", lambda e: self._hamburger_btn.config(fg=self.app.theme.get_accent_blue()))
         self._hamburger_btn.bind("<Leave>", self._on_hamburger_leave)
 
@@ -800,6 +801,7 @@ class MainView(BaseView):
         if self._lbl_icon:
             self._lbl_icon.config(bg=bg)
         self._header_title_lbl.config(bg=bg, fg=txt)
+        self._hamburger_box.configure(bg=bg)
         self._hamburger_btn.config(bg=bg)
         self._on_hamburger_leave()
         self._header_sub_lbl.config(bg=bg, fg=muted)

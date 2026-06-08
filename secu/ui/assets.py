@@ -16,7 +16,7 @@ iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAARs0lEQVR4nNVaCWwc13n+3hw7szeX5PJe
 def load_favicon(root):
     """Load window and header icons."""
     try:
-        # Window toolbar — use bundled .ico (proper Windows multi-size format)
+        # Window toolbar - use bundled .ico (proper Windows multi-size format)
         try:
             base = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
             ico = os.path.join(base, 'secu.ico')
@@ -25,7 +25,7 @@ def load_favicon(root):
         except Exception:
             pass
 
-        # Header icon — 56x56 from base64
+        # Header icon - 56x56 from base64
         favicon_header = tk.PhotoImage(data=base64.b64decode(HEADER_B64))
         return None, favicon_header
     except Exception:
