@@ -1,0 +1,6 @@
+# requirements.txt — SECU v1.3.0
+# Install with: pip install -r requirements.txt
+
+argon2-cffi
+Pillow
+pyperclip
