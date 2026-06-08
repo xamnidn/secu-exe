@@ -74,12 +74,12 @@ class MainView(BaseView):
                 left_group, image=self.app.favicon_header,
                 bg=self.app.theme.get_bg_card()
             )
-            self._lbl_icon.pack(side="left", padx=(0, 10))
+            self._lbl_icon.pack(side="left", padx=(0, 10), anchor="center")
         else:
             self._lbl_icon = None
 
         text_col = tk.Frame(left_group, bg=self.app.theme.get_bg_card())
-        text_col.pack(side="left")
+        text_col.pack(side="left", anchor="center")
 
         self._header_title_lbl = tk.Label(
             text_col,
