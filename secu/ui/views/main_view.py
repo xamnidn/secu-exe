@@ -66,7 +66,7 @@ class MainView(BaseView):
         self._top_row = top_row
 
         left_group = tk.Frame(top_row, bg=self.app.theme.get_bg_card())
-        left_group.pack(side="left")
+        left_group.pack(side="left", fill="y")
         self._left_group = left_group
 
         if self.app.favicon_header:
@@ -74,7 +74,7 @@ class MainView(BaseView):
                 left_group, image=self.app.favicon_header,
                 bg=self.app.theme.get_bg_card()
             )
-            self._lbl_icon.pack(side="left", padx=(0, 10), anchor="center")
+            self._lbl_icon.pack(side="left", padx=(0, 10), fill="y")
         else:
             self._lbl_icon = None
 
