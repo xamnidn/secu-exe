@@ -66,7 +66,7 @@ class MainView(BaseView):
         self._top_row = top_row
 
         left_group = tk.Frame(top_row, bg=self.app.theme.get_bg_card())
-        left_group.pack(side="left", fill="y")
+        left_group.pack(side="left", fill="y", expand=False)
         self._left_group = left_group
 
         if self.app.favicon_header:
@@ -74,15 +74,24 @@ class MainView(BaseView):
                 left_group, image=self.app.favicon_header,
                 bg=self.app.theme.get_bg_card()
             )
-            self._lbl_icon.pack(side="left", padx=(0, 10), fill="y")
+            self._lbl_icon.place(relx=0, rely=0.5, anchor="w")
+            self._icon_placeholder = tk.Frame(
+                left_group,
+                width=self.app.favicon_header.width() + 6,
+                bg=self.app.theme.get_bg_card(),
+            )
+            self._icon_placeholder.pack(side="left")
         else:
             self._lbl_icon = None
 
         text_col = tk.Frame(left_group, bg=self.app.theme.get_bg_card())
-        text_col.pack(side="left", anchor="center")
+        text_col.pack(side="left", fill="y")
+
+        text_inner = tk.Frame(text_col, bg=self.app.theme.get_bg_card())
+        text_inner.place(relx=0, rely=0.5, anchor="w")
 
         self._header_title_lbl = tk.Label(
-            text_col,
+            text_inner,
             text="secu.my.id",
             font=(FONT_FAMILY, 14, "bold"),
             bg=self.app.theme.get_bg_card(),
@@ -91,7 +100,7 @@ class MainView(BaseView):
         self._header_title_lbl.pack(anchor="w")
 
         self._header_sub_lbl = tk.Label(
-            text_col,
+            text_inner,
             text="Secure argon2id\u2011based deterministic password generator",
             font=(FONT_FAMILY, 9),
             bg=self.app.theme.get_bg_card(),
