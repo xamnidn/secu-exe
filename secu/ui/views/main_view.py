@@ -81,7 +81,7 @@ class MainView(BaseView):
         text_col = tk.Frame(left_group, bg=self.app.theme.get_bg_card())
         text_col.pack(side="left", fill="y")
 
-        tk.Frame(text_col, bg=self.app.theme.get_bg_card()).pack(expand=True, fill="y")
+        tk.Frame(text_col, bg=self.app.theme.get_bg_card(), height=4).pack(fill="x")
 
         self._header_title_lbl = tk.Label(
             text_col,
