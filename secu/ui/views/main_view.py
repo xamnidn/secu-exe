@@ -79,7 +79,7 @@ class MainView(BaseView):
             self._lbl_icon = None
 
         text_col = tk.Frame(left_group, bg=self.app.theme.get_bg_card())
-        text_col.pack(side="left", pady=(12, 0))
+        text_col.pack(side="left")
 
         self._header_title_lbl = tk.Label(
             text_col,
@@ -109,7 +109,7 @@ class MainView(BaseView):
             padx=4, pady=0,
             command=self._on_hamburger,
         )
-        self._hamburger_btn.pack(side="right")
+        self._hamburger_btn.pack(side="right", pady=(8, 8))
         self._hamburger_btn.bind("<Enter>", lambda e: self._hamburger_btn.config(fg=self.app.theme.get_accent_blue()))
         self._hamburger_btn.bind("<Leave>", self._on_hamburger_leave)
 
