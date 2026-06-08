@@ -79,7 +79,7 @@ class MainView(BaseView):
             self._lbl_icon = None
 
         text_col = tk.Frame(left_group, bg=self.app.theme.get_bg_card())
-        text_col.pack(side="left", pady=(10, 0))
+        text_col.pack(side="left", pady=(12, 0))
 
         self._header_title_lbl = tk.Label(
             text_col,
