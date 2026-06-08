@@ -74,24 +74,18 @@ class MainView(BaseView):
                 left_group, image=self.app.favicon_header,
                 bg=self.app.theme.get_bg_card()
             )
-            self._lbl_icon.place(relx=0, rely=0.5, anchor="w")
-            self._icon_placeholder = tk.Frame(
-                left_group,
-                width=self.app.favicon_header.width() + 6,
-                bg=self.app.theme.get_bg_card(),
-            )
-            self._icon_placeholder.pack(side="left")
+            self._lbl_icon.pack(side="left", padx=(0, 6))
         else:
             self._lbl_icon = None
 
         text_col = tk.Frame(left_group, bg=self.app.theme.get_bg_card())
         text_col.pack(side="left", fill="y")
 
-        text_inner = tk.Frame(text_col, bg=self.app.theme.get_bg_card())
-        text_inner.place(relx=0, rely=0.5, anchor="w")
+        # Spacer atas agar blok teks center vertikal
+        tk.Frame(text_col, bg=self.app.theme.get_bg_card()).pack(expand=True, fill="y")
 
         self._header_title_lbl = tk.Label(
-            text_inner,
+            text_col,
             text="secu.my.id",
             font=(FONT_FAMILY, 14, "bold"),
             bg=self.app.theme.get_bg_card(),
@@ -100,13 +94,16 @@ class MainView(BaseView):
         self._header_title_lbl.pack(anchor="w")
 
         self._header_sub_lbl = tk.Label(
-            text_inner,
+            text_col,
             text="Secure argon2id\u2011based deterministic password generator",
             font=(FONT_FAMILY, 9),
             bg=self.app.theme.get_bg_card(),
             fg=self.app.theme.get_text_muted(),
         )
         self._header_sub_lbl.pack(anchor="w")
+
+        # Spacer bawah agar blok teks center vertikal
+        tk.Frame(text_col, bg=self.app.theme.get_bg_card()).pack(expand=True, fill="y")
 
         self._hamburger_btn = tk.Button(
             top_row,
