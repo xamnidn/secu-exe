@@ -39,7 +39,7 @@ a = Analysis(
     ["main.py"],
     pathex=[],
     binaries=ARGON2_BINS,          # native .pyd/.so files
-    datas=ARGON2_DATA,             # data files
+    datas=ARGON2_DATA + [("secu.ico", ".")],             # data files
     hiddenimports=ARGON2_HIDDEN + [
         "_argon2_cffi_bindings",   # C extension (argon2-cffi 25.x)
     ],
