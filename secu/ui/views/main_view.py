@@ -99,7 +99,7 @@ class MainView(BaseView):
             bg=self.app.theme.get_bg_card(),
             fg=self.app.theme.get_text_muted(),
         )
-        self._header_sub_lbl.pack(anchor="w")
+        self._header_sub_lbl.pack(anchor="w", pady=(-3, 0))
 
         tk.Frame(text_col, bg=self.app.theme.get_bg_card()).pack(expand=True, fill="y")
 
