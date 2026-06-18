@@ -36,7 +36,7 @@ jobs:
         run: pyinstaller build.spec --noconfirm
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: SECU-Exe-Windows
           path: dist/secu/
@@ -65,7 +65,7 @@ jobs:
         run: pyinstaller build.spec --noconfirm
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: SECU-Exe-Linux
           path: dist/secu/
